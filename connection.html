@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Changeur RPC</title>
+    <link rel=stylesheet href=style.css />
+  </head>
+    <div id="upp"></div>
+  <body>
+    <input id="botid" placeholder="ID du bot">
+    <input type="submit" value="Submit" id="submitid">
+
+
+
+
+
+    <script type="text/javascript">
+      const remote = require('electron').remote
+      const main = remote.require('./main.js')
+
+
+      document.getElementById("submitid").onclick = SendID;
+      const {ipcRenderer} = require('electron');
+
+      function SendID() {
+        let id = document.getElementById("botid").value;
+        if (id === "") {
+          let id = "384424063491244033";
+          ipcRenderer.send('id', id);
+          ipcRenderer.send('modified', "modified");
+          var window = remote.getCurrentWindow();
+          main.openWindow('index');
+          window.close();
+        } else {
+          ipcRenderer.send('id', id);
+          var window = remote.getCurrentWindow();
+          main.openWindow('index');
+          window.close();
+      }
+      };
+    </script>
+
+  </body>
+</html>

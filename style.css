@@ -1,0 +1,52 @@
+body, html {
+  margin: 0px;
+  height: 100%;
+  cursor: default;
+  font-family: sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-app-region: drag;
+  background-color: #301860;
+}
+@keyframes titrecolor {
+  0%   {color:white;}
+  50%  {color:grey;}
+  100% {color:white;}
+}
+h1 {
+  text-align: center;
+  margin: auto;
+  padding-top: 1em;
+  animation-name: titrecolor;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+#upp {
+  background-color: #001848;
+  width: 100%;
+  height: 20px
+}
+@keyframes test {
+  0%   {background-color:#301860;}
+  50%  {background-color:#001848;}
+  100% {background-color:#301860;}
+}
+#botid {
+  width: 80%;
+  height: 50px;
+  background-color: rgb(131, 45, 191);
+  text-align: center;
+  align: middle;
+  color: white;
+  animation-name: test;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+#submitid {
+    border: none;
+}

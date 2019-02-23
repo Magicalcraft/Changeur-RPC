@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Changeur RPC</title>
+    <link rel=stylesheet href=style.css />
+
+  </head>
+  <body>
+    <div id="upp"></div>
+    <h1>RPC</h1>
+
+    <input id="texte1" placeholder="Texte 1">
+    <input id="texte2" placeholder="Texte 2">
+    <br>
+    <input id="bimgid" placeholder="ID grosse image">
+    <input id="bimgte" placeholder="Texte grosse image">
+    <br>
+    <input id="simgid" placeholder="ID petite image">
+    <input id="simgte" placeholder="Texte petite image">
+    <br>
+    <input type="submit" value="Submit" id="submit">
+
+    <p id="modified"></p>
+    <script src=renderer.js></script>
+    <script type="text/javascript">
+
+      const {ipcRenderer} = require('electron');
+      const {ipcMain} = require('electron');
+
+      document.getElementById("submit").onclick = SendRPC;
+
+      function SendRPC() {
+        let texte1 = document.getElementById("texte1").value;
+        let texte2 = document.getElementById("texte2").value;
+        let bimgid = document.getElementById("bimgid").value;
+        let bimgte = document.getElementById("bimgte").value;
+        let simgid = document.getElementById("simgid").value;
+        let simgte = document.getElementById("simgte").value;
+        var value = texte1 + "&&&" + texte2 + "&&&" + bimgid + "&&&" + bimgte + "&&&" + simgid + "&&&" + simgte;
+        ipcRenderer.send('value', value);
+      };
+      ipcMain.on('modified', (event, value) => {
+        document.querySelector("#modified").innerHTML += "Comme vous n'avez pas choisi d'ID, l'ID 384424063491244033 a été sélectionné";
+
+
+      });
+
+
+    </script>
+
+  </body>
+
+</html>
